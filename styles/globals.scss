@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color: #E9BEBE;
+}
+
+.outline-text-hblush{
+  -webkit-text-stroke: 1px #E9BEBE;
+}
+
+.outline-text-hmint{
+  -webkit-text-stroke: 1px #D1EFE4;
+}
+
+.outline-text-hgray{
+  -webkit-text-stroke: 1px #7D7474;
+}
+
+.outline-text-hdust{
+  -webkit-text-stroke: 1px #EEEEEE;
+}
