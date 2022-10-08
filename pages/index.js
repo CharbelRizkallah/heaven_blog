@@ -29,8 +29,7 @@ export default function Home({posts}) {
 
 
 export async function getStaticProps(){
-  const posts = await getPosts() || [];
-  posts = posts.reverse();
+  const posts = await getPosts().reverse() || [];
 
   return {
     props: {posts}
