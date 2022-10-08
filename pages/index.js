@@ -28,7 +28,7 @@ export default function Home({posts}) {
 }
 
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
   var posts = await getPosts() || [];
   posts = posts.reverse();
 
