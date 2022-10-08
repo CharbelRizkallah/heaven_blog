@@ -6,16 +6,16 @@ import { getCategories, getCategoryPost } from '../../services';
 import { PostCard, Categories, Loader } from '../../components';
 
 const CategoryPost = ({ posts }) => {
+    useEffect(() => {
+      fetchData();
+    }, [])
+    
   const router = useRouter();
 
   if (router.isFallback) {
     return <Loader />;
   }
 
-  useEffect(() => {
-    fetchData();
-  }, [])
-  
 
   return (
     <div className="container mx-auto px-10 mb-8">
