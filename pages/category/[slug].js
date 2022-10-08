@@ -45,15 +45,6 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export async function getServerSideProps({ params }) {
-    var posts = await getCategoryPost(params.slug);
-    posts = posts.reverse();
-  
-    return {
-      props: { posts },
-    };
-  }
-
 // Specify dynamic routes to pre-render pages based on data.
 // The HTML is generated at build time and will be reused on each request.
 export async function getStaticPaths() {
