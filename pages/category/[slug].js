@@ -1,14 +1,16 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useLocation } from 'react-router-dom';
 import Head from 'next/head'
 import { getCategories, getCategoryPost } from '../../services';
 import { PostCard, Categories, Loader } from '../../components';
 
 const CategoryPost = ({ posts }) => {
-    // useEffect(() => {
-    //   fetchData();
-    // }, []);
+    useEffect(() => {
+        const slug = window.location.pathname.replace('/category/','');
+        fetchData(slug);
+    }, []);
     
   const router = useRouter();
 
@@ -41,14 +43,14 @@ const CategoryPost = ({ posts }) => {
 };
 export default CategoryPost;
 
-// const fetchData = async ({ params }) => {
-//     var posts = await getCategoryPost(params.slug);
-//     posts = posts.reverse();
+const fetchData = async (slug) => {
+    var posts = await getCategoryPost(slug);
+    posts = posts.reverse();
 
-//   return {
-//     props: { posts },
-//   };
-// }
+  return {
+    props: { posts },
+  };
+}
 
 // Fetch data at build time
 export async function getStaticProps({ params }) {

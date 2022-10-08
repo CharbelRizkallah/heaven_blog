@@ -6,6 +6,10 @@ import Head from 'next/head'
 import {PostDetail, Categories, Loader } from '../../components'
 
 const PostDetails = ({ post }) => {
+    useEffect(() => {
+        const slug = window.location.pathname.replace('/category/','');
+        fetchData(slug);
+    }, []);
   const router = useRouter();
   if(router.isFallback){
     return <Loader />
@@ -32,6 +36,15 @@ const PostDetails = ({ post }) => {
 }
 
 export default PostDetails
+
+const fetchData = async (slug) => {
+    var posts = await getCategoryPost(slug);
+    posts = posts.reverse();
+
+  return {
+    props: { posts },
+  };
+}
 
 export async function getStaticProps({ params }){
   const data = await getPostDetails(params.slug);
