@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react';
 import { getPosts, getPostDetails } from '../../services'
 import Head from 'next/head'
 
