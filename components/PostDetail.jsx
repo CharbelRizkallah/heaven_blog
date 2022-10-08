@@ -22,11 +22,11 @@ const PostDetail = ({ post }) => {
 
     switch (type) {
       case 'heading-three':
-        return <h3 key={index} className="text-xl text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
+        return <h3 key={index} className="text-xl text-center text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
       case 'paragraph':
-        return <p key={index} className="text-hgray mb-8">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
+        return <p key={index} className="text-hgray text-center mb-8">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
       case 'heading-four':
-        return <h4 key={index} className="text-md text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
+        return <h4 key={index} className="text-md text-center text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
       case 'image':
         return (
           <img
@@ -55,7 +55,7 @@ const PostDetail = ({ post }) => {
 
   return (
     <div className='bg-white shadow-lg border border-hmint border-4 rounded-lg lg:p-8 pb-4 mb-4'>
-      <div className='px-4 lg:px-0'>
+      <div className='px-4 text-center lg:px-0'>
         <div className='flex items-center mb-8 w-full'>
           <div className='font-medium w-full text-hgray'>
             <div className='w-full flex justify-center'>
