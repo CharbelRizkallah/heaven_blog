@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { getPosts, getPostDetails } from '../../services'
+import Head from 'next/head'
 
 import {PostDetail, Categories, Loader } from '../../components'
 

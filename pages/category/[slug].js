@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-
+import Head from 'next/head'
 import { getCategories, getCategoryPost } from '../../services';
 import { PostCard, Categories, Loader } from '../../components';
 
@@ -20,7 +20,6 @@ const CategoryPost = ({ posts }) => {
       </Head>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="col-span-1 lg:col-span-8">
-            {posts = posts.reverse()}
           {posts.map((post, index) => (
             <PostCard key={index} post={post.node} />
           ))}
@@ -39,6 +38,7 @@ export default CategoryPost;
 // Fetch data at build time
 export async function getStaticProps({ params }) {
   const posts = await getCategoryPost(params.slug);
+  posts = posts.reverse();
 
   return {
     props: { posts },
