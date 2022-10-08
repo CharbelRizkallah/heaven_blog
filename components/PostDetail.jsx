@@ -21,32 +21,45 @@ const PostDetail = ({ post }) => {
     }
 
     switch (type) {
-      case 'heading-three':
-        return <h3 key={index} className="text-xl text-center text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
-      case 'paragraph':
-        return <p key={index} className="text-hgray text-center mb-8">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
-      case 'heading-four':
-        return <h4 key={index} className="text-md text-center text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
-      case 'image':
-        return (
-          <img
-            key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
-            className='rounded-lg'
-          />
+        case 'heading-one':
+            return <h1 key={index} className="text-3xl text-center text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1>
+        case 'heading-two':
+            return <h2 key={index} className="text-2xl text-center text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h2>
+        case 'heading-three':
+            return <h3 key={index} className="text-xl text-center text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
+        case 'paragraph':
+            return <p key={index} className="text-hgray text-center mb-8">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
+        case 'heading-four':
+            return <h4 key={index} className="text-lg text-center text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
+        case 'heading-five':
+            return <h5 key={index} className="text-md text-center text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h5>;
+        case 'heading-six':
+            return <h6 key={index} className="text-md text-center text-hgray font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h6>;
+        case 'image':
+            return (
+                <div className='flex justify-center my-2'>
+                    <img
+                        key={index}
+                        alt={obj.title}
+                        height={obj.height}
+                        width={obj.width}
+                        src={obj.src}
+                        className='rounded-lg border border-4 border-hblush'
+                    />
+                </div>
         );
         case 'video':
           return (
-            <video key={index} 
-            alt={obj.title} 
-            src={obj.src} 
-            width={obj.width} height={obj.height} 
-            controls="controls"
-            className='rounded-lg'
-            />
+            <div className='flex justify-center'>
+                <video key={index} 
+                alt={obj.title} 
+                src={obj.src} 
+                width={obj.width} height={obj.height} 
+                controls="controls"
+                className='rounded-lg border border-4 border-hblush'
+                />
+            </div>
+            
           );
       default:
         return modifiedText;
@@ -72,10 +85,10 @@ const PostDetail = ({ post }) => {
           </div>
         </div>
         {post.content.raw.children.map((typeObj, index) => {
-          const children = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item));
+            const children = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item));
 
-          return getContentFragment(index, children, typeObj, typeObj.type)
-        })}
+            return getContentFragment(index, children, typeObj, typeObj.type)
+            })}
       </div>
     </div>
   )

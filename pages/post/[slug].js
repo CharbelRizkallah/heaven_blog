@@ -39,11 +39,10 @@ const PostDetails = ({ post }) => {
 export default PostDetails
 
 const fetchData = async (slug) => {
-    var posts = await getCategoryPost(slug);
-    posts = posts.reverse();
+    const post = await getPostDetails(slug);
 
   return {
-    props: { posts },
+    props: { post },
   };
 }
 
