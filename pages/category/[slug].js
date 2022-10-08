@@ -6,9 +6,9 @@ import { getCategories, getCategoryPost } from '../../services';
 import { PostCard, Categories, Loader } from '../../components';
 
 const CategoryPost = ({ posts }) => {
-    useEffect(() => {
-      fetchData();
-    }, [])
+    // useEffect(() => {
+    //   fetchData();
+    // }, []);
     
   const router = useRouter();
 
@@ -41,14 +41,14 @@ const CategoryPost = ({ posts }) => {
 };
 export default CategoryPost;
 
-const fetchData = async ({params}) => {
-    var posts = await getCategoryPost(params.slug);
-    posts = posts.reverse();
+// const fetchData = async ({ params }) => {
+//     var posts = await getCategoryPost(params.slug);
+//     posts = posts.reverse();
 
-  return {
-    props: { posts },
-  };
-}
+//   return {
+//     props: { posts },
+//   };
+// }
 
 // Fetch data at build time
 export async function getStaticProps({ params }) {
@@ -56,7 +56,7 @@ export async function getStaticProps({ params }) {
   posts = posts.reverse();
 
   return {
-    props: { posts },
+    props: { posts }, revalidate: 10,
   };
 }
 
