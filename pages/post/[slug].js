@@ -16,7 +16,7 @@ const PostDetails = ({ post }) => {
     return <Loader />
   }
   return (
-    <div className='container mx-auto px-10 mb-8'>
+    <div className='container mx-auto px-4 mb-8'>
         <Head>
             <title>Heaven</title>
             <meta name="description" content=":D" />
