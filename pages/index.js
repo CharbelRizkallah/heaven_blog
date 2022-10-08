@@ -1,9 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Categories, PostCard } from '../components'
+import { Categories, PostCard, Loader } from '../components'
 import { getPosts } from '../services'
+import { useRouter } from 'next/router'
 
 export default function Home({posts}) {
+  const router = useRouter();
+  if(router.isFallback){
+    return <Loader />
+  }
   return (
     <div className='container mx-auto px-10 mb-8'>
       <Head>
@@ -35,4 +40,12 @@ export async function getStaticProps(){
   return {
     props: {posts}
   }
+}
+
+export async function getStaticPaths(){
+  const posts = await getPosts();
+  return{
+    paths: posts.map(({node: {slug}}) => ({params: {slug}})),
+    fallback: true,
+  };
 }
