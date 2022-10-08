@@ -37,7 +37,7 @@ export default CategoryPost;
 
 // Fetch data at build time
 export async function getStaticProps({ params }) {
-  const posts = await getCategoryPost(params.slug);
+  var posts = await getCategoryPost(params.slug);
   posts = posts.reverse();
 
   return {
@@ -46,7 +46,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getServerSideProps({ params }) {
-    const posts = await getCategoryPost(params.slug);
+    var posts = await getCategoryPost(params.slug);
     posts = posts.reverse();
   
     return {
