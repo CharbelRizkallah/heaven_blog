@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head'
 import { getCategories, getCategoryPost } from '../../services';
@@ -10,6 +11,11 @@ const CategoryPost = ({ posts }) => {
   if (router.isFallback) {
     return <Loader />;
   }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+  
 
   return (
     <div className="container mx-auto px-10 mb-8">
@@ -34,6 +40,15 @@ const CategoryPost = ({ posts }) => {
   );
 };
 export default CategoryPost;
+
+const fetchData = async ({params}) => {
+    var posts = await getCategoryPost(params.slug);
+    posts = posts.reverse();
+
+  return {
+    props: { posts },
+  };
+}
 
 // Fetch data at build time
 export async function getStaticProps({ params }) {
