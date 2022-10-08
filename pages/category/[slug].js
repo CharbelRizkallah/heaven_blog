@@ -56,7 +56,7 @@ export async function getStaticProps({ params }) {
   posts = posts.reverse();
 
   return {
-    props: { posts }, revalidate: 10,
+    props: { posts }, revalidate: 1,
   };
 }
 
